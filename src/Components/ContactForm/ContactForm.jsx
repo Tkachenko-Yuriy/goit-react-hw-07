@@ -9,19 +9,19 @@ const FeedbackSchema = Yup.object().shape({
     .min(2, "Too Short!")
     .max(50, "Too Long!")
     .required("Required"),
-  number: Yup.string()
-    .matches(/^\d{3}-\d{2}-\d{2}$/, "Must be in 123-45-67 format")
+  phone: Yup.string()
+    .matches(/^\d{3}-\d{3}-\d{4}$/, "Must be in 123-456-7890 format")
     .required("Required"),
 });
 
 const initialValues = {
   name: "",
-  number: "",
+  phone: "",
 };
 
 export default function ContactFotm({ onChange }) {
   const nameFieldId = useId();
-  const numberFieldId = useId();
+  const phoneFieldId = useId();
 
   const handleSubmit = (values, actions) => {
     onChange(values);
@@ -47,14 +47,14 @@ export default function ContactFotm({ onChange }) {
         </div>
 
         <div className={css.wrapper}>
-          <label htmlFor={numberFieldId}>Phone number</label>
+          <label htmlFor={phoneFieldId}>Phone number</label>
           <Field
             className={css.input}
             type="tel"
-            name="number"
-            id={numberFieldId}
+            name="phone"
+            id={phoneFieldId}
           />
-          <ErrorMessage name="number" as="span" />
+          <ErrorMessage name="phone" as="span" />
         </div>
         <Button text="Submit" type="submit" />
       </Form>

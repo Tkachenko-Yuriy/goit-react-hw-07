@@ -2,7 +2,7 @@ import { FaUserTie } from "react-icons/fa";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import css from "./Contact.module.css";
 
-export default function Contact({ name, number, children }) {
+export default function Contact({ name, phone, children }) {
   return (
     <>
       <div className={css.info}>
@@ -12,7 +12,7 @@ export default function Contact({ name, number, children }) {
         </p>
         <p className={css.telephoneNumber}>
           <BsFillTelephoneFill className={css.icon} />
-          {number}
+          {phone}
         </p>
       </div>
       {children}

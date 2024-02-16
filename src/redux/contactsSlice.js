@@ -28,15 +28,9 @@ const contactSlice = createSlice({
       .addCase(fetchContacts.rejected, handleRejected)
       .addCase(addContact.pending, handlePending)
       .addCase(addContact.fulfilled, (state, action) => {
-        const newContact = {
-          name: action.payload.contact.name,
-          phone: action.payload.contact.phone,
-          id: action.payload.id,
-          createdAt: action.payload.createdAt,
-        };
         state.isLoading = false;
         state.error = null;
-        state.items.push(newContact);
+        state.items.push(action.payload);
       })
       .addCase(addContact.rejected, handleRejected)
       .addCase(deleteContact.pending, handlePending)
